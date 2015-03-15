@@ -5,8 +5,8 @@
   <title>Cat Clicker</title>
 </head>
 <body>
-  <ul data-bind="foreach: catNames">
-    <li data-bind="text: $data"></li>
+  <ul data-bind="foreach: catList">
+    <li data-bind="text: name, click: $parent.updateCurrentCat"></li>
   </ul>
   <div id="cat" data-bind="with: currentCat">
     <h2 data-bind="text: name"></h2>

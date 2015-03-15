@@ -31,14 +31,14 @@ var initialCats = [
     name : 'Shadow',
     imgSrc : 'img/1413379559_412a540d29_z.jpg',
     imgAttribution : 'https://www.flickr.com/photos/malfet/1413379559',
-    nickname: ['Shooby']
+    nicknames: ['Shooby']
   },
   {
     clickCount : 0,
     name : 'Sleepy',
     imgSrc : 'img/9648464288_2516b35537_z.jpg',
     imgAttribution : 'https://www.flickr.com/photos/onesharp/9648464288',
-    nickname: ['Zzzzzz']
+    nicknames: ['Zzzzzz']
   }
 ];
 
@@ -76,13 +76,11 @@ var ViewModel = function() {
 
   this.currentCat = ko.observable(this.catList()[0]);
 
-  this.catNames = ko.computed(function() {
-    var names = [];
-    self.catList().forEach(function(catItem) {
-      names.push(catItem.name);
-    });
-    return names;
-  });
+  this.updateCurrentCat = function(cat) {
+    if (cat !== self.currentCat) {
+      self.currentCat(cat);
+    }
+  };
 
   self.incrementCounter = function() {
     self.currentCat().clickCount(self.currentCat().clickCount() + 1);
